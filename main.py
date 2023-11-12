@@ -3,7 +3,7 @@ from io import StringIO
 from vector_search import *
 import qa
 from utils import *
-
+import os
 
 st.markdown("<h1 style='text-align: center; color: white;'>Semantic Search Engine for Documents and Q&A</h1>", unsafe_allow_html=True)
 
@@ -12,14 +12,61 @@ st.markdown("<h1 style='text-align: center; color: white;'>Semantic Search Engin
 st.title("Ask Questions Relating to General Content, uses the Open AI Chat GPT API")
 st.text("")
 
+# Sidebar section for uploading files and providing a  URL
+with st.sidebar:
+
+    with st.form("my-form", clear_on_submit=True):
+        uploaded_files = st.file_uploader("Please upload your file", accept_multiple_files=True, type=None)
+        for uploaded_file in uploaded_files:
+            
+            # Create the full file path for the uploaded file
+            filename = os.path.join(os.getcwd(), uploaded_file.name)
+            # Save the uploaded file to disk
+            with open(filename, "wb") as f:
+                f.write(uploaded_file.getvalue())
+
+        submitted = st.form_submit_button("UPLOAD!")
+
+    if submitted and filename is not None:
+        st.write("UPLOADED!",filename)
+        # do stuff with your file
+        with st.spinner("Updating Database..."):
+
+            # Split on last '.' 
+            name, file_type = filename.rsplit('.', 1)
+
+            if file_type == 'docx':
+                corpusData = scrape_text_from_docx(filename)
+                addData(corpusData,filename)
+                st.success("Database Updated With docx")
+            elif file_type == 'pdf':
+                corpusData = scrape_text_from_pdf(filename)
+                addData(corpusData,filename)
+                st.success("Database Updated With pdf")
+            elif file_type == 'pptx':
+                corpusData = scrape_text_from_pptx(filename)
+                addData(corpusData,filename)
+                st.success("Database Updated With ppt")
+            elif file_type == 'csv':
+                corpusData = scrape_text_from_csv(filename)
+                addData(corpusData,filename)
+                st.success("Database Updated With csv")
+            elif file_type in ('png', 'jpeg', 'jpg', 'gif'):
+                corpusData = scrape_text_from_image(filename)
+                addData(corpusData,filename)
+                st.success("Database Updated With Image")
+            else:
+                st.success("Unsupported file type")
+            uploaded_files=''
+            filename = ''
+
+
 filename = False
 query = False
 options = st.radio(
     'Choose task',
-    ('Ask a question','Update the Database of Documents', 'Delete Database of Documents'))
+    ('Ask a question', 'Delete Database of Documents'))
 
-if 'Update the Database' in options:
-    filename = st.text_input("Enter the full path of the PDF document")
     
 if 'Ask a question' in options:
     query = st.text_input("Enter your question")
@@ -29,36 +76,11 @@ if 'Delete Database of Documents' in options:
 
 button = st.button("Submit")
   
-if button and (filename or query or reset_index):
+if button and (query or reset_index):
     if 'Delete Database of Documents' in options:
         with st.spinner("Deleting Database of Documents, this may take a few minutes..."):
             rebuildIndex()
             st.success("Database Re-created")
-            
-    if 'Update the Database' in options:
-        with st.spinner("Updating Database..."):
-
-            # Split on last '.' 
-            name, file_type = filename.rsplit('.', 1)
-
-            if file_type == 'docx':
-                corpusData = scrape_text_from_docx(filename)
-                addData(corpusData,filename)
-                st.success("Database Updated")
-            elif file_type == 'pdf':
-                corpusData = scrape_text_from_pdf(filename)
-                addData(corpusData,filename)
-                st.success("Database Updated")
-            elif file_type == 'pptx':
-                corpusData = scrape_text_from_pptx(filename)
-                addData(corpusData,filename)
-                st.success("Database Updated")
-            elif file_type == 'csv':
-                corpusData = scrape_text_from_csv(filename)
-                addData(corpusData,filename)
-                st.success("Database Updated")
-            else:
-                st.success("Unsupported file type")
             
             
     if 'Ask a question' in options:
