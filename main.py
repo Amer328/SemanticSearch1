@@ -16,7 +16,7 @@ st.text("")
 with st.sidebar:
 
     with st.form("my-form", clear_on_submit=True):
-        uploaded_files = st.file_uploader("Please upload your file", accept_multiple_files=True, type=None)
+        uploaded_files = st.file_uploader("Please upload your file, one file at a time only please...", accept_multiple_files=True, type=None)
         for uploaded_file in uploaded_files:
             
             # Create the full file path for the uploaded file
