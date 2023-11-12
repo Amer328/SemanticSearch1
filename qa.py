@@ -1,11 +1,10 @@
 import os
 import streamlit as st
 import openai
-from openai import OpenAI
 
 # Fetch the OpenAI Key from Windows env
 # api_key = os.environ["OPENAI_API_KEY"]
-api_key = st.secrets["OPENAI_API_KEY"]
+api_key = st.secrets["OPENAI_API"]
 
 # Set the OpenAI key
 openai.api_key = api_key
@@ -17,9 +16,7 @@ def create_prompt(context,query):
 
 
 def generate_answer(prompt):
-    client = OpenAI()
-
-    response = client.chat.completions.create(
+    response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo-16k",
     messages=[{"role": "user", "content": prompt}],
     temperature=0.1,
