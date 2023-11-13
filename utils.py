@@ -80,7 +80,7 @@ def get_plain_text_csv(csv_filename):
     reader = csv.reader(f)
 
     # Skip header row
-    next(reader)  
+    # next(reader)  
 
     # Initialize empty string 
     csv_text = ""
