@@ -7,6 +7,20 @@ import csv
 from openai import OpenAI
 import base64
 
+def get_plain_text_from_txt(txt_filename):
+    # Initialize empty string 
+    txt_text = ""
+
+    # Open text file
+    with open(txt_filename, 'r') as f:
+        # Loop through lines
+        for line in f:
+            # Append line to the string
+            txt_text += line
+
+    # Return text
+    return txt_text
+
 def get_plain_text(pdf_filename):
     # Open the PDF file in read-binary mode
     with open(pdf_filename, 'rb') as f:
@@ -142,6 +156,11 @@ def get_plain_text_image(image_file):
     max_tokens=300,
     )
     return response.choices[0].message.content
+
+def scrape_text_from_txt(txt_file, max_chars=2000):
+    plain_text = get_plain_text_from_txt(txt_file)
+    text_chunks = split_text_into_chunks(plain_text, max_chars)
+    return text_chunks
 
 def scrape_text_from_pdf(pdf_file, max_chars=2000):
     plain_text = get_plain_text(pdf_file)
