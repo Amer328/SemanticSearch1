@@ -143,7 +143,7 @@ def get_plain_text_image(image_file):
         {
             "role": "user",
             "content": [
-                {"type": "text", "text": "What’s in this image?"},
+                {"type": "text", "text": "Analyse this image in detail, extract data in tabular form, label each table and provide a narrative for each table"},
                 {
                     "type": "image_url",
                     "image_url": {
