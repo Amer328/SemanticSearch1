@@ -16,8 +16,8 @@ st.text("")
 with st.sidebar:
 
     with st.form("my-form2", clear_on_submit=True):
-        upload_url = st.text_input("Please enter youtube url:")
-        submitted = st.form_submit_button("UPLOAD Video URL")
+        upload_url = st.text_input("Please enter your video url:")
+        submitted = st.form_submit_button("Upload Video URL")
 
     if submitted and upload_url is not None:
         st.write("Uploaded Video URL",upload_url)
