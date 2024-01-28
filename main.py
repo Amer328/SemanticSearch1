@@ -18,6 +18,12 @@ with st.sidebar:
     with st.form("my-form2", clear_on_submit=True):
         upload_url = st.text_input("Please enter youtube url:")
         submitted = st.form_submit_button("UPLOADx!")
+
+    if submitted and upload_url is not None:
+        st.write("UPLOADED!",upload_url)
+        # do stuff with your file
+        with st.spinner("Updating Database..."):
+            upload_url = ''
          
     with st.form("my-form", clear_on_submit=True):
         uploaded_files = st.file_uploader("Please upload your file, one file at a time only please...", accept_multiple_files=True, type=None)
