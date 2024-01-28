@@ -111,7 +111,7 @@ def get_plain_text_csv(csv_filename):
   # Return text
   return csv_text
 
-def get_plain_text_youtube(youtube_url)
+def get_plain_text_youtube(youtube_url):
     
     try: 
         # object creation using YouTube
