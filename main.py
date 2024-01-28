@@ -15,7 +15,7 @@ st.text("")
 # Sidebar section for uploading files and providing a  URL
 with st.sidebar:
 
-     with st.form("my-form", clear_on_submit=True):
+    with st.form("my-form", clear_on_submit=True):
         uploaded_files = st.file_uploader("Please enter youtube url:", accept_multiple_files=True, type=None)
          
     with st.form("my-form", clear_on_submit=True):
