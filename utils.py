@@ -111,12 +111,11 @@ def get_plain_text_csv(csv_filename):
   # Return text
   return csv_text
 
-def get_plain_text_youtube(youtube_url):
+def get_plain_text_mp4(mp4_url):
     
     try: 
-        # object creation using YouTube
-        # which was imported in the beginning 
-        yt = YouTube(youtube_url) 
+        # object creation using url to mp4 location
+        yt = YouTube(mp4_url) 
     except: 
         print("Connection Error")
 
@@ -209,5 +208,10 @@ def scrape_text_from_csv(csv_file, max_chars=2000):
  
 def scrape_text_from_image(image_file, max_chars=2000):
     plain_text = get_plain_text_image(image_file)
+    text_chunks = split_text_into_chunks(plain_text, max_chars)
+    return text_chunks
+
+def scrape_text_from_mp4(mp4_file, max_chars=2000):
+    plain_text = get_plain_text_image(mp4_file)
     text_chunks = split_text_into_chunks(plain_text, max_chars)
     return text_chunks
