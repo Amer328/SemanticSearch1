@@ -17,6 +17,7 @@ with st.sidebar:
 
     with st.form("my-form", clear_on_submit=True):
         uploaded_files = st.file_uploader("Please enter youtube url:", accept_multiple_files=True, type=None)
+        submitted = st.form_submit_button("UPLOAD!")
          
     with st.form("my-form", clear_on_submit=True):
         uploaded_files = st.file_uploader("Please upload your file, one file at a time only please...", accept_multiple_files=True, type=None)
