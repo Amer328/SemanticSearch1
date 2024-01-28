@@ -212,6 +212,6 @@ def scrape_text_from_image(image_file, max_chars=2000):
     return text_chunks
 
 def scrape_text_from_mp4(mp4_file, max_chars=2000):
-    plain_text = get_plain_text_image(mp4_file)
+    plain_text = get_plain_text_mp4(mp4_file)
     text_chunks = split_text_into_chunks(plain_text, max_chars)
     return text_chunks
