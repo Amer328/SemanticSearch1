@@ -7,6 +7,9 @@ import csv
 from openai import OpenAI
 import base64
 
+from pytube import YouTube 
+import whisper
+
 def get_plain_text_from_txt(txt_filename):
     # Initialize empty string 
     txt_text = ""
@@ -107,6 +110,28 @@ def get_plain_text_csv(csv_filename):
 
   # Return text
   return csv_text
+
+def get_plain_text_youtube(youtube_url)
+    
+    try: 
+        # object creation using YouTube
+        # which was imported in the beginning 
+        yt = YouTube(youtube_url) 
+    except: 
+        print("Connection Error")
+
+    # Download video stream to file
+
+    yt.streams.filter(file_extension='mp4')
+    stream = yt.streams.get_by_itag(139)
+    stream.download('',"AudioTranscript.mp4")
+
+    model = whisper.load_model("base.en")
+    audio_file= "AudioTranscript.mp4"
+    result = model.transcribe(audio_file)
+
+    result_text = result['text']
+    return result_text
 
 
 def split_text_into_chunks(plain_text, max_chars=2000):
