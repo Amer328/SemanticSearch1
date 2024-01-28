@@ -23,7 +23,11 @@ with st.sidebar:
         st.write("UPLOADED!",upload_url)
         # do stuff with your file
         with st.spinner("Updating Database..."):
+            corpusData = scrape_text_from_mp4(upload_url)
+            addData(corpusData,upload_url)
             upload_url = ''
+            st.success("Database Updated With Video Transcript")
+
          
     with st.form("my-form", clear_on_submit=True):
         uploaded_files = st.file_uploader("Please upload your file, one file at a time only please...", accept_multiple_files=True, type=None)
