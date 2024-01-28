@@ -6,6 +6,7 @@ import pptx
 import csv
 from openai import OpenAI
 import base64
+import textwrap
 
 from pytube import YouTube 
 import whisper
@@ -130,7 +131,10 @@ def get_plain_text_mp4(mp4_url):
     result = model.transcribe(audio_file)
 
     result_text = result['text']
-    return result_text
+    
+
+    wrapped_text = textwrap.fill(result_text, width=80)
+    return wrapped_text
 
 
 def split_text_into_chunks(plain_text, max_chars=2000):
