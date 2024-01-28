@@ -16,7 +16,7 @@ st.text("")
 with st.sidebar:
 
     with st.form("my-form2", clear_on_submit=True):
-        upload_url = st.text_input("Please enter youtube url:", accept_multiple_files=True, type=None)
+        upload_url = st.text_input("Please enter youtube url:")
         submitted = st.form_submit_button("UPLOADx!")
          
     with st.form("my-form", clear_on_submit=True):
