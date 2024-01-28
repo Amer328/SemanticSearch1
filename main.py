@@ -17,10 +17,10 @@ with st.sidebar:
 
     with st.form("my-form2", clear_on_submit=True):
         upload_url = st.text_input("Please enter youtube url:")
-        submitted = st.form_submit_button("UPLOADx!")
+        submitted = st.form_submit_button("UPLOAD Video URL")
 
     if submitted and upload_url is not None:
-        st.write("UPLOADED!",upload_url)
+        st.write("Uploaded Video URL",upload_url)
         # do stuff with your file
         with st.spinner("Updating Database..."):
             corpusData = scrape_text_from_mp4(upload_url)
@@ -39,10 +39,10 @@ with st.sidebar:
             with open(filename, "wb") as f:
                 f.write(uploaded_file.getvalue())
 
-        submitted = st.form_submit_button("UPLOAD!")
+        submitted = st.form_submit_button("Upload File")
 
     if submitted and filename is not None:
-        st.write("UPLOADED!",filename)
+        st.write("Uploaded",filename)
         # do stuff with your file
         with st.spinner("Updating Database..."):
 
