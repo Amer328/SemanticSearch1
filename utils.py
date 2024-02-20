@@ -121,7 +121,7 @@ def get_plain_text_mp4(mp4_url):
         print("Connection Error")
 
     # Download video stream to file
-    yt = YouTube(mp4_url)
+    
     yt.streams.filter(file_extension='mp4')
     stream = yt.streams.get_by_itag(139)
     stream.download('',"AudioTranscript.mp4")
