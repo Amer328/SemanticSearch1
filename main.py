@@ -75,7 +75,7 @@ with st.sidebar:
                 st.success("Database Updated With Image")
             elif file_type == 'mp4':
                 corpusData = scrape_text_from_mp4(filename)
-                addData(corpusData,upload_url)
+                addData(corpusData,filename)
                 upload_url = ''
                 st.success("Database Updated With Video Transcript")
             else:
