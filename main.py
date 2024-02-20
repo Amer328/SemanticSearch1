@@ -69,7 +69,7 @@ with st.sidebar:
                 corpusData = scrape_text_from_csv(filename)
                 addData(corpusData,filename)
                 st.success("Database Updated With csv")
-            elif file_type in ('png', 'jpeg', 'jpg', 'gif'):
+            elif file_type in ('png', 'jpeg', 'jpg', 'gif','GIF','JPG'):
                 corpusData = scrape_text_from_image(filename)
                 addData(corpusData,filename)
                 st.success("Database Updated With Image")
