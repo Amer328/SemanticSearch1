@@ -28,7 +28,7 @@ with st.sidebar:
         buffer = BytesIO()
         youtube_video = YouTube(download_url)
         audio = youtube_video.streams.get_audio_only()
-        # default_filename = audio.default_filename
+        default_filename = audio.default_filename
         audio.stream_to_buffer(buffer)
 
         st.subheader("Title")
