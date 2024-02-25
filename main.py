@@ -29,7 +29,7 @@ with st.sidebar:
         youtube_video = YouTube(download_url)
         audio = youtube_video.streams.get_audio_only()
         default_filename = audio.default_filename
-        audio.stream_to_buffer(buffer)
+        # audio.stream_to_buffer(buffer)
 
         # st.subheader("Title")
         # st.write(default_filename)
