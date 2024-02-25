@@ -23,7 +23,7 @@ with st.sidebar:
         st.write("Uploaded Video URL",upload_url)
         # do stuff with your file
         with st.spinner("Updating Database..."):
-            #corpusData = scrape_text_from_mp4(upload_url)
+            corpusData = scrape_text_from_mp4(upload_url)
             addData(corpusData,upload_url)
             upload_url = ''
             st.success("Database Updated With Video Transcript")
