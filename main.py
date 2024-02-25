@@ -35,11 +35,11 @@ with st.sidebar:
         st.write(default_filename)
         # title_vid = Path(default_filename).with_suffix(".mp3").name
         st.subheader("Download Audio File")
-        #st.download_button(
-        #    label="Download mp3",
-        #    data=buffer,
-        #    file_name='c:\\temp\\download.mp3',#title_vid,
-        #    mime="audio/mpeg")
+        st.download_button(
+            label="Download mp3",
+            data=buffer,
+            file_name='c:\\temp\\download.mp3',#title_vid,
+            mime="audio/mpeg")
 
          
     with st.form("my-form", clear_on_submit=True):
