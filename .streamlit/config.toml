@@ -3,3 +3,4 @@ base="dark"
 primaryColor="purple"
 [server]
 enableXsrfProtection=false
+enableCORS = false
