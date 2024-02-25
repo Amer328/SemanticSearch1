@@ -26,7 +26,7 @@ with st.sidebar:
         st.write("Downloading Video URL...",download_url)
         # do stuff with your file 
         buffer = BytesIO()
-        # youtube_video = YouTube(download_url)
+        youtube_video = YouTube(download_url)
         # audio = youtube_video.streams.get_audio_only()
         # default_filename = audio.default_filename
         # audio.stream_to_buffer(buffer)
