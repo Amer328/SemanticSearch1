@@ -23,32 +23,24 @@ with st.sidebar:
         submitted = st.form_submit_button("Download from URL")
 
     if submitted and download_url is not None:
-        st.write("Uploaded Video URL",download_url)
-        # do stuff with your file 
-        with st.spinner("Updating Database..."):
-            corpusData = scrape_text_from_mp4(download_url)
-            addData(corpusData,download_url)
-            download_url = ''
-            st.success("Database Updated With Video Transcript")
-
         
-        #st.write("Downloading Video URL...",download_url)
+        st.write("Downloading Video URL...",download_url)
         # do stuff with your file 
-        #buffer = BytesIO()
-        #youtube_video = YouTube(download_url)
-        #audio = youtube_video.streams.get_audio_only()
-        #default_filename = audio.default_filename
-        #audio.stream_to_buffer(buffer)
+        buffer = BytesIO()
+        youtube_video = YouTube(download_url)
+        audio = youtube_video.streams.get_audio_only()
+        default_filename = audio.default_filename
+        audio.stream_to_buffer(buffer)
 
-        #st.subheader("Title")
-        #st.write(default_filename)
-        #title_vid = Path(default_filename).with_suffix(".mp3").name
-        #st.subheader("Download Audio File")
-        #st.download_button(
-        #    label="Download mp3",
-        #    data=buffer,
-        #    file_name=title_vid,#'c:\\temp\\download.mp3',
-        #    mime="audio/mpeg")
+        st.subheader("Title")
+        st.write(default_filename)
+        title_vid = Path(default_filename).with_suffix(".mp3").name
+        st.subheader("Download Audio File")
+        st.download_button(
+            label="Download mp3",
+            data=buffer,
+            file_name=title_vid,#'c:\\temp\\download.mp3',
+            mime="audio/mpeg")
 
          
     with st.form("my-form", clear_on_submit=True):
