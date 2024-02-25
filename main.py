@@ -42,7 +42,7 @@ with st.sidebar:
             label="Download mp4",
             data=buffer,
             file_name=title_vid,#'c:\\temp\\download.mp3',
-            mime="video/mpeg")
+            mime="video/mp4")
 
          
     with st.form("my-form", clear_on_submit=True):
