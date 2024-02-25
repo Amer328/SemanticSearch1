@@ -4,6 +4,9 @@ from vector_search import *
 import qa
 from utils import *
 import os
+from pytube import YouTube
+from io import BytesIO
+from pathlib import Path
 
 st.markdown("<h1 style='text-align: center; color: white;'>Semantic Search Engine for Documents and Q&A</h1>", unsafe_allow_html=True)
 
@@ -16,17 +19,27 @@ st.text("")
 with st.sidebar:
 
     with st.form("my-form2", clear_on_submit=True):
-        upload_url = st.text_input("Please enter your video url:")
-        submitted = st.form_submit_button("Upload Video URL")
+        download_url = st.text_input("Please enter your video url:")
+        submitted = st.form_submit_button("Download from URL")
 
-    if submitted and upload_url is not None:
-        st.write("Uploaded Video URL",upload_url)
+    if submitted and download_url is not None:
+        st.write("Downloading Video URL...",download_url)
         # do stuff with your file 
-        with st.spinner("Updating Database..."):
-            corpusData = scrape_text_from_mp4(upload_url)
-            addData(corpusData,upload_url)
-            upload_url = ''
-            st.success("Database Updated With Video Transcript")
+        buffer = BytesIO()
+        youtube_video = YouTube(download_url)
+        audio = youtube_video.streams.get_audio_only()
+        default_filename = audio.default_filename
+        audio.stream_to_buffer(buffer)
+
+        st.subheader("Title")
+        st.write(default_filename)
+        title_vid = Path(default_filename).with_suffix(".mp3").name
+        st.subheader("Download Audio File")
+        st.download_button(
+            label="Download mp3",
+            data=buffer,
+            file_name=title_vid,
+            mime="audio/mpeg")
 
          
     with st.form("my-form", clear_on_submit=True):
