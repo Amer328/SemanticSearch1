@@ -21,7 +21,7 @@ with st.sidebar:
 
     if submitted and upload_url is not None:
         st.write("Uploaded Video URL",upload_url)
-        # do stuff with your file
+        # do stuff with your file 
         with st.spinner("Updating Database..."):
             corpusData = scrape_text_from_mp4(upload_url)
             addData(corpusData,upload_url)
