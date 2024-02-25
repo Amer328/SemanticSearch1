@@ -33,12 +33,12 @@ with st.sidebar:
 
         st.subheader("Title")
         st.write(default_filename)
-        # title_vid = Path(default_filename).with_suffix(".mp3").name
+        title_vid = Path(default_filename).with_suffix(".mp3").name
         st.subheader("Download Audio File")
         st.download_button(
             label="Download mp3",
             data=buffer,
-            file_name='c:\\temp\\download.mp3',#title_vid,
+            file_name=title_vid,#'c:\\temp\\download.mp3',
             mime="audio/mpeg")
 
          
