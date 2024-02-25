@@ -38,7 +38,7 @@ with st.sidebar:
         st.download_button(
             label="Download mp3",
             data=buffer,
-            file_name=title_vid,
+            file_name=file_name='c:\\temp\\download.mp3',#title_vid,
             mime="audio/mpeg")
 
          
