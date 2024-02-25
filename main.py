@@ -39,7 +39,7 @@ with st.sidebar:
         title_vid = Path(default_filename).with_suffix(".mp4").name
         st.subheader("Download Video File")
         st.download_button(
-            label="Download mp3",
+            label="Download mp4",
             data=buffer,
             file_name=title_vid,#'c:\\temp\\download.mp3',
             mime="video/mpeg")
