@@ -19,7 +19,7 @@ with st.sidebar:
         upload_url = st.text_input("Please enter your video url:")
         submitted = st.form_submit_button("Upload Video URL")
 
-    if submitted and upload_url is not None:
+    if submitted and upload_url is None:
         st.write("Uploaded Video URL",upload_url)
         # do stuff with your file
         with st.spinner("Updating Database..."):
