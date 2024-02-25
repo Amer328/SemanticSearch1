@@ -31,10 +31,10 @@ with st.sidebar:
         # default_filename = audio.default_filename
         audio.stream_to_buffer(buffer)
 
-        # st.subheader("Title")
-        # st.write(default_filename)
+        st.subheader("Title")
+        st.write(default_filename)
         # title_vid = Path(default_filename).with_suffix(".mp3").name
-        # st.subheader("Download Audio File")
+        st.subheader("Download Audio File")
         #st.download_button(
         #    label="Download mp3",
         #    data=buffer,
