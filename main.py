@@ -29,20 +29,20 @@ with st.sidebar:
         buffer = BytesIO()
         youtube_video = YouTube(download_url)
         audio = youtube_video.streams.get_audio_only()
-        video = youtube_video.streams.first()
+        #video = youtube_video.streams.first()
         default_filename = 'download' # audio.default_filename
-        #audio.stream_to_buffer(buffer)
-        video.stream_to_buffer(buffer)
+        audio.stream_to_buffer(buffer)
+        #video.stream_to_buffer(buffer)
 
         st.subheader("Title")
         st.write(default_filename)
-        title_vid = Path(default_filename).with_suffix(".mp4").name
-        st.subheader("Download Video File")
+        title_vid = Path(default_filename).with_suffix(".mp3").name
+        st.subheader("Download Audio File")
         st.download_button(
-            label="Download mp4",
+            label="Download mp3",
             data=buffer,
             file_name=title_vid,#'c:\\temp\\download.mp3',
-            mime="video/mpeg")
+            mime="audio/mpeg")
 
          
     with st.form("my-form", clear_on_submit=True):
