@@ -89,7 +89,7 @@ with st.sidebar:
                 corpusData = scrape_text_from_image(filename)
                 addData(corpusData,filename)
                 st.success("Database Updated With Image")
-            elif file_type == 'mp3':
+            elif file_type == 'mp4':
                 corpusData = scrape_text_from_mp4(filename)
                 addData(corpusData,filename)
                 upload_url = ''
