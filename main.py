@@ -95,10 +95,14 @@ with st.sidebar:
                 upload_url = ''
                 st.success("Database Updated With Video Transcript")
             elif file_type == 'mp3':
-                corpusData = scrape_text_from_mp3(filename)
-                addData(corpusData,filename)
-                upload_url = ''
-                st.success("Database Updated With Audio Transcript") 
+                transcript = scrape_text_from_mp3(filename)
+                # st.success("Database Updated With Audio Transcript")
+                st.download_button(
+                label="Download data as txt",
+                data=transcript,
+                file_name='transcript.txt',
+                mime='text/txt',
+                ) 
             else:
                 st.success("Unsupported file type")
             uploaded_files=''
