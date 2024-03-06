@@ -229,8 +229,9 @@ def scrape_text_from_image(image_file, max_chars=2000):
 
 def scrape_text_from_mp4(mp4_file, max_chars=2000):
     plain_text = get_plain_text_mp4(mp4_file)
-    text_chunks = split_text_into_chunks(plain_text, max_chars)
-    return text_chunks
+    # text_chunks = split_text_into_chunks(plain_text, max_chars)
+    # return text_chunks
+    return plain_text
 
 def scrape_text_from_mp3(mp3_file, max_chars=2000):
     plain_text = get_plain_text_mp3(mp3_file)
