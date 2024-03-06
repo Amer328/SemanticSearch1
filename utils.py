@@ -135,6 +135,18 @@ def get_plain_text_mp4(mp4_url):
 
     wrapped_text = textwrap.fill(result_text, width=80)
     return wrapped_text
+    
+def get_plain_text_mp3(mp3_url):
+    
+    model = whisper.load_model("base.en")
+    audio_file= mp3_url
+    result = model.transcribe(audio_file)
+
+    result_text = result['text']
+    
+
+    wrapped_text = textwrap.fill(result_text, width=80)
+    return wrapped_text
 
 
 def split_text_into_chunks(plain_text, max_chars=2000):
@@ -217,5 +229,10 @@ def scrape_text_from_image(image_file, max_chars=2000):
 
 def scrape_text_from_mp4(mp4_file, max_chars=2000):
     plain_text = get_plain_text_mp4(mp4_file)
+    text_chunks = split_text_into_chunks(plain_text, max_chars)
+    return text_chunks
+
+def scrape_text_from_mp3(mp3_file, max_chars=2000):
+    plain_text = get_plain_text_mp3(mp3_file)
     text_chunks = split_text_into_chunks(plain_text, max_chars)
     return text_chunks
