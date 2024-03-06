@@ -94,6 +94,11 @@ with st.sidebar:
                 addData(corpusData,filename)
                 upload_url = ''
                 st.success("Database Updated With Video Transcript")
+            elif file_type == 'mp3':
+                corpusData = scrape_text_from_mp3(filename)
+                addData(corpusData,filename)
+                upload_url = ''
+                st.success("Database Updated With Audio Transcript") 
             else:
                 st.success("Unsupported file type")
             uploaded_files=''
