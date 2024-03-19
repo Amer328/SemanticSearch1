@@ -12,7 +12,7 @@ openai.api_key = api_key
 
 def create_prompt(context,query):
     # header = "Answer the question with as much detail as possible using the provided context and support your answer with paragraphs and bullet points. If no answer is generated, print 'Sorry insufficient data to answer query' \n"
-    header = "Search for requested song title using the provided context, find the nearest semantic match possible.  If no answer is generated, print 'Sorry insufficient data to answer query' \n"
+    header = "Search for requested song title using the provided context, find the closest match possible.  If no answer is generated, print 'Sorry insufficient data to answer query' \n"
     return header + context + "\n\n" + query + "\n"
 
 def generate_answer(prompt):
