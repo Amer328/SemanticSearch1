@@ -73,7 +73,7 @@ with st.sidebar:
                 corpusData = scrape_text_from_txt(filename)
                 addData(corpusData,filename)
                 st.success("Database Updated With txt")
-            elif file_type == 'pdf':
+            elif file_type in ('pdf','PDF'):
                 corpusData = scrape_text_from_pdf(filename)
                 addData(corpusData,filename)
                 st.success("Database Updated With pdf")
